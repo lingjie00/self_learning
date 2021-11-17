@@ -1,0 +1,4 @@
+gym-anytrading
+stable_baselines
+ta
+yfinance
