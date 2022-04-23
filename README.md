@@ -24,3 +24,13 @@ elaborate on the relevant resources.
 
 - Each topic/course will have its own branch until I'm done
   with the material.
+
+## Content available
+
+| topic | folder name | remark |
+| ----- | ----------- | ------ |
+| TensorFlow Developer Professional Certificate | archive/DeepLearning.AI | Incomplete resources for the notes/codes I have while preparing for the certification |
+| Cookiecutter - Project Templates | archive/cookiecutter | Sample Cookiecutter project structure I built when I was experimenting with Cookiecutter |
+| Docker | archive/docker101 | Toying around with setting up Dockerfile |
+| How to win DS competition | archive/how_to_win_ds_competition | Exploring the techniques top kaggle competitors use |
+| Swift | archive/swfit | exploring Swift language |
