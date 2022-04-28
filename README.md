@@ -29,6 +29,7 @@ elaborate on the relevant resources.
 
 | topic | folder name | remark |
 | ----- | ----------- | ------ |
+| Probabilistic Logic Programming | Probabilistic_logic_programming | |
 | TensorFlow Developer Professional Certificate | archive/DeepLearning.AI | Incomplete resources for the notes/codes I have while preparing for the certification |
 | Cookiecutter - Project Templates | archive/cookiecutter | Sample Cookiecutter project structure I built when I was experimenting with Cookiecutter |
 | Docker | archive/docker101 | Toying around with setting up Dockerfile |
