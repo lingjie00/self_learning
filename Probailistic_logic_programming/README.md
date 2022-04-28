@@ -10,7 +10,7 @@ on probabilistic semantic.
 Reading the paper requires some time, I watched a [Short
 introduction to probabilistic logic programming by Angelika
 Kimmig.](https://www.youtube.com/watch?v=5g0Z5b77rOs&ab_channel=PROBPROGConference)
-The notes I make is available [here](./short_intro_to_angelika_kimmig_yt.html)
+The notes I make is available [here](./short_intro_to_angelika_kimmig_yt.md)
 
 ## Abstract of Raymond (1992)
 
