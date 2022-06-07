@@ -1,0 +1,134 @@
+# Selecting and Training a Model
+
+
+## Modeling overview
+
+Key question: What are they key challenges in building a
+deployment ready model?
+
+- Select and train model
+- Perform error analysis
+
+Two approaches to the problem
+
+- Model-centric AI development
+- Data-centric AI development
+
+Practical projects will benefit more from choosing
+data-centric: more quality data is more important.
+
+## Key Challenges
+
+Framework: AI system = Code + Data
+
+- Code: algorithm/model
+  - Model-centric, same data but change the model
+  - Hyper-parameter is also an choice variable, but the
+    search space is relatively narrow
+- Data
+  - Data-centric, practical problems usually only require
+    off the shelf models but require customised data 
+
+Key to improve performance: efficient iterative process to
+update model, training and perform error analysis
+
+Bonus: perform final audit on error analysis
+
+Challenges in model development
+
+1. Doing well on training set
+   - If model is not performing on training set, then most
+     likely it will not perform on test set
+2. Doing well on dev/test sets
+   - Research generally focus on this. However, it is
+     insufficient for business team
+3. Doing well on business metrics/ project goals
+
+## Why low average error isn't good enough
+
+Performing well on test set isn't enough
+
+Challenges
+
+- Data/model drift
+- Performance on disproportionately important examples
+  - E.g. web search: informational and transactional queries
+    can have lower performance. Navigational queries (very
+    specific search) must have very accurate results else
+    risking trust.
+  - Changing/imposing the weight of different examples might work for
+    some problems, but not all
+- Performance on key slices of the dataset
+  - E.g. ML for loan approval should not discriminate based
+    on attributes. High average accuracy is insufficient if
+    there is bias towards a racial group.
+  - E.g. Product recommendations from retailers. High
+    average but ignores racial group or small retailers or
+    product categories will damage the business since you
+    will lose some groups of customers.
+- Rare classes
+  - Skewed data distribution. For example, in medical
+    applications where positive class is very low.
+
+## Establish a baseline
+
+Baseline is required to know where to improve on.
+
+Set baseline by the type of use case (e.g.
+Speech recognition)
+
+- Compare against human level performance, and investigate
+  the potential gain in benefit to achieve human level
+  performance
+- Unstructured and structured data 
+  - Human perform better in unstructured data (image, audio,
+    text). So establishing baseline with human benchmark is
+    good.
+  - Structured data in a giant database confuses human.
+    Human baseline is not very useful.
+
+Ways to establish a baseline
+
+- Human level performance (HLP)
+- Literature search for state-of-the-art/open source
+- Quick-and-dirty implementation
+- Performance of older system
+
+Baseline helps to indicates what might be possible. In some
+cases is also gives a sense of what is irreducible
+error/Bayes error.
+
+For example, it might be near impossible to beat HLP.
+
+## Tips for getting started
+
+Getting started on modeling
+
+- Literature search to see what's possible (courses, blogs,
+  open-source projects)
+  - If your goal is not research, then pick something
+    reasonable that can be start quickly
+  - Do not have to use the latest invention
+- Find open-source implementations if available
+- A reasonable algorithm with good data will often outperform
+  a great algorithm with no so good data
+  - Starting early means more time in iterations
+
+Deployment constraints when picking a model
+
+- Should you take into account deployment constraints when
+  picking a model?
+  - Yes if baseline is established and goal is to build and
+    deploy
+  - No if purpose is to establish a baseline and determine
+    what is possible and might be worth pursuing
+
+Sanity-check for code and algorithm
+
+- Try to overfit a small training dataset before training on
+  a large one.
+  - For example: predict one single speech, image
+    segmentation to make sure if it can at least overfit the
+    training example before scaling up. Or image
+    classification just train a subset of 10 images to make
+    sure at least the basic case is handled

@@ -1,0 +1,73 @@
+# Data Iteration
+
+How to take a data centric AI development
+
+- Model centric view: take the data and develop model that
+  does as well as possible on it (e.g. academic research
+  perform benchmark based on a fixed data)
+  - Hold the data fixed and iteratively improve the
+    code/model
+- Data centric view: the quality of the data is paramount.
+  Use tools to improve the data quality; this will allow
+  multiple models to do well. Hold code fix, change data.
+  - More useful for common use case.
+
+## Data augmentation
+
+Check list
+
+1. Does it sound realistic
+2. Is the x to y mapping clear (e.g. can humans recognise
+   speech?)
+3. Is the algorithm currently doing poorly on it?
+
+A useful picture of data augmentation: e.g. speech
+recognition
+
+- Different types of speech input (e.g. car, plane, train,
+  machine noise)
+- Consider a plot with y-axis: performance; x-axis: space of
+  possible inputs
+  - The different inputs will have different performance.
+    E.g. better performing with car noise than plane noise.
+  - Consider a one-dimensional curve, human and AI will have
+    different level of performance (HLP vs Model). The gap
+    illustrates an opportunity of improvement. The adjacent
+    problems will likely be lessen as well.
+  - The one-dimensional curve is also the error analysis to
+    understand where to "pull up" next to achieve near HLP.
+
+Data augmentation is especially useful for unstructured data
+problems. The best practices for data augmentation include:
+
+- Synthetic training example: voice signal + noise
+  - Decision: what kind of background noise, how loud should
+    the noise be
+- Goal: create realistic examples that (i) the algorithm
+  does poorly on, but (ii) humans (or other baseline) do
+  well on.
+  - If the example is impossible for human to well on, then
+    there is no point to train
+  - If the example is already performing well, then there is
+    no point to do augmentation as well.
+- Although you can re-train the model with different
+  parameters. It is more beneficial to generate augmented
+  data and see if the performance improve
+
+Another example: image
+
+- Contrast changes, Darken changes (but if it is too dark
+  even human cannot identify it, then there is no point to
+  implement it as a data augmentation).
+- Data augmentation can be done with photoshop. E.g. a
+  scratch using photoshop
+  - GAN models can be over-kill when simple photoshop can
+    generate the augmented samples
+
+Data iteration loop
+
+- Add/Improve data (holding model fixed)
+- Training
+- Error analysis
+
+Can adding data hurt?

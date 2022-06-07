@@ -1,0 +1,131 @@
+# Error analysis
+
+What is the most efficient use of the time to improve
+learning algorithm 
+
+An example: speech recognition
+
+- Listen to hundreds of mislabeled examples. Then observe
+  hypothesis of errors (e.g. car noise, people noise). New
+  ideas can be proposed to reflect the common observations
+  of the errors.
+- This process helps you to understand the category of the
+  source of the errors. Generally it's a manual process.
+- There are emerging automation tools to improve the process
+  of debugging.
+
+Iterative process of  error analysis
+
+- Examine/tag examples
+  - Specific class labels: scratch, dent etc
+  - image properties: blurry, dark background, light
+    background etc
+   - other meta-data: phone model, factory
+- Propose tags
+  - User demographic
+
+Useful metrics for each tag
+
+- What fraction of errors has that tag?
+  - If tags belong to 12% of the error, then maximum
+    possible improvement is 12%
+- Of all data with that tag, what fraction is misclassified?
+  - Tells the model accuracy belonging to that tag
+- What fraction of all the data has that tag?
+  - Tells relatively the importance of the tag
+- How much room for improvement is there on data with that
+  tag?
+  - E.g. compare against human
+
+## Prioritizing what to work on
+
+Observe
+
+1. Gap between model and human level accuracy
+2. % of data
+
+The improvement is (1) * (2). For example, 1% gap * 60% data
+= 0.6% improvement
+
+Decide on the most important categories to work on based on
+
+- How much room for improvement there is
+- How frequently that category appears
+- How easy is to improve accuracy in that category
+- How important it is to improve in that category
+
+Adding/improving data for specific categories
+
+- To improve the model performance on categories you want to
+  prioritize
+  - Minimise and focus on the type of data to collect
+- Collect more data
+- Use data augmentation to get more data
+- Improve label accuracy/ data quality
+
+
+## Skewed datasets
+
+Ratio of positive to negative class is high
+
+Examples
+
+- Manufacturing: 99.7% no defect (y=0)
+  - Printing 0 will achieve 99.7% accuracy
+- Medical diagnosis: 99% no disease
+- Speech Recognition: wake word detection not spoken 96.7%
+  of the time
+
+More useful to investigate the confusion matrix: precision
+and recall.
+
+- Precision: true positive / predicted positive (TP + FP)
+  - Among predictions, percentage of accuracy
+- Recall: true positive / all positive class (TP + FN)
+  - Among all positive, how many are captured
+- F1 score
+  - Combining prediction and recall: doing well on both,
+    F1 = 2 / (1/P + 1/R), harmonic mean -> the mean that
+    puts more weight on the smaller value
+  - Weights can be changed according to use case
+  - Useful for multi-class metrics as well
+    - Factories might concern more about recall than
+      prediction: humans can re-verify the defects
+    - Observe the F1 score for each of the type of defects
+
+## Performance auditing
+
+After the validation of test set F1 score validation.
+
+Auditing framework, check for accuracy, fairness/bias, and
+other problems
+
+- Brainstorm the ways the system might go wrong
+  - Performance on subset of data (e.g. ethnicity, gender)
+  - How common are certain errors (e.g. FP, FN)
+  - Performance on rare classes
+- Establish metrics to assess performance against thesis
+  issues on appropriate slices of data
+  - Instead of the full data, analysis performance using a
+    subset (slice) of the data
+- Automatic metric computation can be useful to improve the
+  efficiency of performance auditing
+- Get business product owner to buy-in on the limitations
+
+An example: speech recognition
+
+- Brainstorm the ways the system might go wrong
+    - Accuracy on different genders and ethnicities
+    - Accuracy on different devices
+    - Prevalence of rude mis-transcriptions (e.g. GAN to
+      gun, gang). Transcription into rude words is more
+      serious than inaccurate transcription 
+- Establish metrics to assess performance against these
+  issues on appropriate slices of data
+  - Mean accuracy for different genders and major accents
+  - Mean accuracy on different devices
+  - Check for prevalence of offensive words in the output
+
+For high-stake application, having a team to brainstorm the
+possible errors is often helpful than individual
+contributors.

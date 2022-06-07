@@ -1,0 +1,15 @@
+---
+title: Week 2 Select and Train a Model
+output:
+    md_document:
+    variant: markdown_github
+---
+
+```{r child="select_train.Rmd"}
+```
+
+```{r child="error_analysis.Rmd"}
+```
+
+```{r child="data_iter.Rmd"}
+```
